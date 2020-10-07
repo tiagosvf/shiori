@@ -3,7 +3,7 @@ FROM golang:alpine AS builder
 RUN apk add --no-cache build-base
 WORKDIR /src
 COPY . .
-RUN GOOS=linux GOARCH=arm GOARM=5 CGO_ENABLED=1 go build
+RUN CGO_ENABLED=1 GOOS=linux GOARCH=arm GOARM=5 go build
 
 # server image
 FROM golang:alpine
